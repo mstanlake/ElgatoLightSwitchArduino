@@ -1,6 +1,7 @@
 #ifndef Bonjour_Helper_H
 #define Bonjour_Helper_H
 
+// The version of Ethernet Bonjour we are using is a forked version that used WifiUDP vs EthernetUDP.
 #include <EthernetBonjour.h>
 #include <WiFi101.h>
 #include <SPI.h>
