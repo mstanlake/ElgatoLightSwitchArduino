@@ -2,9 +2,9 @@
 #include <SPI.h>
 #include <WiFi101.h>
 
-WiFiHelper::WiFiHelper(IPAddress _ipAddress, int _port) {
-    this->elgatoLightIp = _ipAddress;
-    this->port = _port;
+WiFiHelper::WiFiHelper() {
+
+    lightDataRetrieved = false;
 }
 bool WiFiHelper::setupWifi() {
   //Configure pins for Adafruit ATWINC1500 Feather
@@ -37,13 +37,19 @@ bool WiFiHelper::setupWifi() {
   printCurrentNet();
   printWiFiData();
 
+  bonjourHelper.init();
+
   return true;
 
 }
 
-void WiFiHelper::updateElgatoLight(char* json){
 
-    if (client.connect(this->elgatoLightIp, this->port)) {
+
+void WiFiHelper::updateElgatoLight(char* json){
+  if (!bonjourHelper.isLightFound()) {
+    return;
+  }
+     if (client.connect(bonjourHelper.getLightIP(), bonjourHelper.getPort())) {
         
         char response[500];
         sprintf(response, putRequestFormat, strlen(json), json);
@@ -64,19 +70,23 @@ void WiFiHelper::updateElgatoLight(char* json){
 }
 
 char* WiFiHelper::getElgatoLightData() {
-    if (client.connect(this->elgatoLightIp, this->port)) {
-        // Make a HTTP request:
-        client.println("GET /elgato/lights HTTP/1.1");
-        client.println();
+  if (!bonjourHelper.isLightFound()) {
+    return NULL;
+  }
 
-        if (!handleElgatoResponse()) {
-            client.stop();
-            return NULL;
-        }
+  if (client.connect(bonjourHelper.getLightIP(), bonjourHelper.getPort())) {
+    // Make a HTTP request:
+    client.println("GET /elgato/lights HTTP/1.1");
+    client.println();
+
+    if (!handleElgatoResponse()) {
+      client.stop();
+      return NULL;
     }
-    client.stop();
-    return rawJson;
-
+  }
+  client.stop();
+  return rawJson;
+  
 }
 
 bool WiFiHelper::handleElgatoResponse() {

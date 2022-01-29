@@ -1,3 +1,6 @@
+#include <WiFiUdp.h>
+#include <EthernetBonjour.h>
+
 #include <SPI.h>
 #include <WiFi101.h>
 #include <EasyButton.h>
@@ -5,7 +8,6 @@
 #include "WiFiHelper.h"
 #include "DisplayHelper.h"
 #include "LightStatus.h"
-  
 
 EasyButton easyButtonA(9);
 EasyButton easyButtonB(6);
@@ -13,7 +15,7 @@ EasyButton easyButtonC(5);
 
 LightStatus lightStatus;
 DisplayHelper displayHelper = DisplayHelper(&lightStatus);
-WiFiHelper wiFiHelper = WiFiHelper(IPAddress(192,168,86,37), 9123);
+WiFiHelper wiFiHelper = WiFiHelper();
 
 void onButtonAPressedFor2Seconds() {
   displayHelper.changeSelection(); 
@@ -76,16 +78,7 @@ void setup() {
     while (true);
   }
 
-  char* jsonLightData = wiFiHelper.getElgatoLightData();
-  if (jsonLightData == NULL) {
-      return;
-  }
-  lightStatus.SetFromJson(jsonLightData);
-  
-  Serial.println("Disconnecting from server.");
-  
-
-  displayHelper.init();
+    displayHelper.init();
   displayHelper.drawDisplay();
 
   
@@ -96,6 +89,17 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
+  bonjourHelper.loop();
+
+  if (bonjourHelper.isLightFound() && !lightStatus.isDataInitialized())
+  {
+    Serial.println("Getting initial data from light");
+    char* jsonLightData = wiFiHelper.getElgatoLightData();
+    lightStatus.SetFromJson(jsonLightData);
+
+    displayHelper.drawDisplay();
+  }
+
   easyButtonA.read();
   easyButtonB.read();
   easyButtonC.read();
@@ -104,8 +108,10 @@ void loop() {
     displayHelper.ClearDisplay();
     Serial.println("Display cleared");
   }
-
+  
 }
+
+
 
 
 

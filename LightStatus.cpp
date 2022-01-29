@@ -16,10 +16,11 @@ LightStatus::LightStatus()
     temperature = 300;
     brightness = 50;
     lightOn = 0;
+    dataInitialized = false;
 }
 
 void LightStatus::SetFromJson(char* rawJson) {
-
+    dataInitialized = true;
     Serial.println("Deserializing json");
    
     DeserializationError err = deserializeJson(jsonDoc, rawJson);
@@ -59,27 +60,27 @@ bool LightStatus::ToggleLight(){
 // Increases Temp by 5%
 int LightStatus::IncreaseTemperature() {
     Serial.println(temperature);
-    temperature += 10;
+    temperature += 20;
     if (temperature > TemperatureMax) temperature = TemperatureMax;
     return temperature;
 }
 
 // Increases Temp by 5%
 int LightStatus::DecreaseTemperature() {
-    temperature -= 10;
+    temperature -= 20;
     if (temperature < TemperatureMin) temperature = TemperatureMin;
     return temperature;
 }
 
-// Increases Temp by 5%
+// Increases Temp by 10%
 int LightStatus::DecreaseBrightness() {
-    brightness -= 5;
+    brightness -= 10;
     if (brightness < 0) brightness = 0;
     return brightness;
 }
-// Increases Temp by 5%
+// Increases Temp by 10%
 int LightStatus::IncreaseBrightness() {
-    brightness += 5;
+    brightness += 10;
     if (brightness > 100) brightness = 100;
     return brightness;
 }

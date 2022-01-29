@@ -4,6 +4,7 @@
 #include <SPI.h>
 #include <WiFi101.h>
 #include <WiFiClient.h>
+#include "BonjourHelper.h"
 
 #define MAX_JSON_SIZE 256
 static char putRequestFormat[] = "PUT /elgato/lights HTTP/1.1\r\n"  \
@@ -13,17 +14,16 @@ static char putRequestFormat[] = "PUT /elgato/lights HTTP/1.1\r\n"  \
 
 class WiFiHelper {
   public:
-    WiFiHelper(IPAddress ipAddress, int port);
+    WiFiHelper();
     bool setupWifi();
-    
     char* getElgatoLightData();
     void updateElgatoLight(char* json);
-    
+
+
     private: 
     WiFiClient client;
     char rawJson[MAX_JSON_SIZE];
-    IPAddress elgatoLightIp;
-    int port;
+
     
     
     void printCurrentNet();
@@ -32,7 +32,7 @@ class WiFiHelper {
     
     bool handleElgatoResponse();
     bool trimHttpHeaders();
-
+    bool lightDataRetrieved;
 };
 
 

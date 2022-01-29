@@ -23,11 +23,14 @@ public:
     int IncreaseTemperature();
     int DecreaseTemperature();
 
+    bool isDataInitialized() {return dataInitialized;} ;
+
     char* getJson();
 
 private:
     StaticJsonDocument<MAX_JSON_SIZE> jsonDoc;
     char serializedJson[MAX_JSON_SIZE];
+    bool dataInitialized;
 
     bool lightOn;
     int brightness;
