@@ -5,6 +5,7 @@
 WiFiHelper::WiFiHelper() {
 
     lightDataRetrieved = false;
+    initSetupComplete = false;
 }
 bool WiFiHelper::setupWifi() {
   //Configure pins for Adafruit ATWINC1500 Feather
@@ -38,9 +39,25 @@ bool WiFiHelper::setupWifi() {
   printWiFiData();
 
   bonjourHelper.init();
+  initSetupComplete = true;
+  return initSetupComplete;
 
-  return true;
+}
 
+bool WiFiHelper::checkConnection()
+{
+  if (WiFi.status() != WL_CONNECTED && initSetupComplete)
+  {
+    // We've lost WiFi after the initial setup, so go and reconnect.
+    WiFi.beginProvision();
+    while (WiFi.status() != WL_CONNECTED) {
+      // wait while not connected
+      // blink the led to show an unconnected status
+      ;
+    } 
+    Serial.println("Reconnected to WiFi");
+  }
+  return WiFi.status() == WL_CONNECTED;
 }
 
 

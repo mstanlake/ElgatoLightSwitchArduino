@@ -18,12 +18,12 @@ class WiFiHelper {
     bool setupWifi();
     char* getElgatoLightData();
     void updateElgatoLight(char* json);
-
+    bool checkConnection();
 
     private: 
     WiFiClient client;
     char rawJson[MAX_JSON_SIZE];
-
+    bool initSetupComplete;
     
     
     void printCurrentNet();

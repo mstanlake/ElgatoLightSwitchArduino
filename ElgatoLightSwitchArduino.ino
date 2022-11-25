@@ -1,4 +1,6 @@
+
 #include <WiFiUdp.h>
+#include <Ethernet.h>
 #include <EthernetBonjour.h>
 
 #include <SPI.h>
@@ -9,9 +11,12 @@
 #include "DisplayHelper.h"
 #include "LightStatus.h"
 
+
 EasyButton easyButtonA(9);
 EasyButton easyButtonB(6);
 EasyButton easyButtonC(5);
+
+int x =0;
 
 LightStatus lightStatus;
 DisplayHelper displayHelper = DisplayHelper(&lightStatus);
@@ -109,6 +114,7 @@ void loop() {
     Serial.println("Display cleared");
   }
   
+ 
 }
 
 

@@ -26,18 +26,23 @@
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\tools\\CMSIS-Atmel\\1.2.2\\CMSIS\\Device\\ATMEL\\",
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\cores\\arduino",
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\variants\\feather_m0",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\WiFi101\\src",
+                "C:\\ArduinoIDE1.8\\libraries\\Ethernet\\src",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\EthernetBonjour",
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\libraries\\SPI",
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\libraries\\Adafruit_ZeroDMA",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\EasyButton\\src",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\ArduinoJson\\src",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\Adafruit_GFX_Library",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\Adafruit_BusIO",
+                "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\libraries\\Wire",
+                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\Adafruit_SSD1306",
                 "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\arm-none-eabi\\include\\c++\\9.2.1",
                 "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\arm-none-eabi\\include\\c++\\9.2.1\\arm-none-eabi",
                 "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\arm-none-eabi\\include\\c++\\9.2.1\\backward",
                 "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\lib\\gcc\\arm-none-eabi\\9.2.1\\include",
                 "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\lib\\gcc\\arm-none-eabi\\9.2.1\\include-fixed",
-                "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\arm-none-eabi\\include",
-                "C:\\Users\\BakerSt\\Documents\\Arduino\\libraries\\**",
-                "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\libraries\\Wire"
-                
-                
+                "c:\\users\\bakerst\\appdata\\local\\arduino15\\packages\\adafruit\\tools\\arm-none-eabi-gcc\\9-2019q4\\arm-none-eabi\\include"
             ],
             "forcedInclude": [
                 "C:\\Users\\BakerSt\\AppData\\Local\\Arduino15\\packages\\adafruit\\hardware\\samd\\1.7.6\\cores\\arduino\\Arduino.h"
@@ -45,7 +50,7 @@
             "cStandard": "c11",
             "cppStandard": "c++11",
             "defines": [
-                "__SKETCH_NAME__=\"\"\"ElgatoLightFinder.ino\"\"\"",
+                "__SKETCH_NAME__=\"\"\"ElgatoLightSwitchArduino.ino\"\"\"",
                 "F_CPU=48000000L",
                 "ARDUINO=10819",
                 "ARDUINO_SAMD_ZERO",
