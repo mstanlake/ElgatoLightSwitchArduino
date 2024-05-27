@@ -2,7 +2,7 @@
     "configuration": "opt=small,usbstack=arduino,debug=off",
     "board": "adafruit:samd:adafruit_feather_m0",
     "programmer": "adafruit:adafruit_jlink",
-    "port": "COM4",
+    "port": "/dev/ttyACM0",
     "sketch": "ElgatoLightSwitchArduino.ino",
-    "output": "./output"
+    "output": "./build"
 }

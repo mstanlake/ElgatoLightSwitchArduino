@@ -1,4 +1,4 @@
-#include "WifiHelper.h"
+#include "WiFiHelper.h"
 #include <SPI.h>
 #include <WiFi101.h>
 
