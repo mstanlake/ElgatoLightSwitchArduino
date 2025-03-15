@@ -11,6 +11,8 @@
 #include "DisplayHelper.h"
 #include "LightStatus.h"
 
+unsigned long lastWiFiCheck = 0;
+const unsigned long WIFI_CHECK_INTERVAL = 30000;     // 30 seconds
 
 EasyButton easyButtonA(9);
 EasyButton easyButtonB(6);
@@ -94,6 +96,19 @@ void setup() {
 
 // the loop function runs over and over again forever
 void loop() {
+
+  unsigned long currentMillis = millis();
+// Periodic WiFi check
+if (currentMillis - lastWiFiCheck >= WIFI_CHECK_INTERVAL) {
+  Serial.print("Checking WiFi - Status: ");
+  Serial.println(WiFi.status());
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi connection lost. Attempting to reconnect...");
+    wiFiHelper.setupWifi();  // Attempt to reconnect
+  }
+  lastWiFiCheck = currentMillis;
+}
+
   bonjourHelper.loop();
 
   if (bonjourHelper.isLightFound() && !lightStatus.isDataInitialized())
